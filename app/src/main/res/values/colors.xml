@@ -11,4 +11,5 @@
     <color name="regular_button_colour">#303F9F</color>
     <color name="accent_button_colour">#4CAF50</color>
     <color name="hint_text_colour">#757575</color>
+    <color name="calendar_selected_date_colour">#3F51B5</color>
 </resources>

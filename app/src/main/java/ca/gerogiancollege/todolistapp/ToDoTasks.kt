@@ -18,6 +18,16 @@ package ca.gerogiancollege.todolistapp
  *      - Added code to allow switching between layouts, FOR DEMO ONLY
  *      - Created Adapter Class "TaskAdapter"
  *      - Created Data Class "ToDoTasks"
+ *
+ * Version 1.2
+ *      - Replaced Date EditText with CalendarView, as per instructions
+ *      - Redesigned details page to accommodate the changed layout
+ *      - Added toggle switch for Due Date, no functionality yet
+ *
+ * Version 1.3
+ *      - Added a new Frame for "Task Completed" Checkbox in the Details Layout
+ *      - Re-designed Details layout to accomodate the changes
+ *      - Re-configured colouring of CalendarView to make it easier to read in dark mode
  */
 
 // Data class for ToDoTasks
