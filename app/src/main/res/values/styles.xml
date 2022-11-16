@@ -2,7 +2,7 @@
 <resources>
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
         <item name="colorAccent">@color/calendar_selected_date_colour</item>
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
     </style>
 
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">

@@ -131,9 +131,9 @@
             android:layout_height="@dimen/calendar_layout_height"
             android:layout_marginTop="@dimen/calendar_margin_top"
             android:background="@drawable/layout_border"
+            android:dateTextAppearance="@style/CalenderViewWeekCustomText"
             android:theme="@style/CalenderViewCustom"
-            android:dateTextAppearance="@style/CalenderViewDateCustomText"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
+            android:weekDayTextAppearance="@style/CalenderViewDateCustomText" />
 
     </FrameLayout>
 
@@ -145,12 +145,10 @@
         android:layout_marginTop="590dp"
         android:layout_marginEnd="@dimen/button_layout_margin_start"
         android:background="@drawable/layout_border"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Details_Page_Button_FrameLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/Task_Complete_Label"
