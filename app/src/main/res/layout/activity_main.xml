@@ -20,6 +20,8 @@
             android:id="@+id/Add_Task_Button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/task_button_height"
+            android:backgroundTint="@color/accent_button_colour"
+            android:onClick="addTaskClicked"
             android:text="@string/add_task_text" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
