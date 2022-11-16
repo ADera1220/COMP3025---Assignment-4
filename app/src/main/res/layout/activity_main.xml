@@ -6,13 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Todo_Recycler_View"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/recycler_view_height" />
+
+        <Button
+            android:id="@+id/Add_Task_Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/task_button_height"
+            android:text="@string/add_task_text" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

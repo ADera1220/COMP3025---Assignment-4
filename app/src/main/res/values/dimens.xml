@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="task_button_height">60dp</dimen>
+    <dimen name="recycler_view_height">680dp</dimen>
+    <dimen name="date_margin_bottom">5dp</dimen>
+    <dimen name="date_margin_start">5dp</dimen>
+    <dimen name="task_name_margin_start">5dp</dimen>
+    <dimen name="task_name_margin_top">5dp</dimen>
+    <dimen name="task_name_text_size">16sp</dimen>
+    <dimen name="date_text_size">16sp</dimen>
+    <dimen name="checkbox_margin_top">5dp</dimen>
+    <dimen name="checkbox_width_height">70dp</dimen>
+    <dimen name="edit_button_width_height">70dp</dimen>
+    <dimen name="edit_button_margin_end">65dp</dimen>
+    <item name="checkbox_scale_x_y" type="dimen" format="float">1.5</item>
+</resources>
