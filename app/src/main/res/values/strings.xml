@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDoListApp</string>
+    <string name="app_name">ToDo List</string>
     <string name="add_task_text">Add a new task</string>
     <string name="task_name_placeholder">first task to be completed</string>
     <string name="date_placeholder_text">11/11/2022</string>

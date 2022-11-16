@@ -12,5 +12,6 @@
     <dimen name="checkbox_width_height">70dp</dimen>
     <dimen name="edit_button_width_height">70dp</dimen>
     <dimen name="edit_button_margin_end">65dp</dimen>
+    <dimen name="list_item_height">80dp</dimen>
     <item name="checkbox_scale_x_y" type="dimen" format="float">1.5</item>
 </resources>
