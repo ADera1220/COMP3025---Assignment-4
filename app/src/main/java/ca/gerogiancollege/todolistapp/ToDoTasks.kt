@@ -2,8 +2,8 @@ package ca.gerogiancollege.todolistapp
 
 /**
  * COMP 3025 | Mobile and Pervasive Computing
- * Assignment 3 | ToDo List application
- * November 15, 2023
+ * Assignment 4 | ToDo List application
+ * December 1st, 2023
  * Adam Dera | Student #: 200422676
  *
  * Version 1.0
@@ -28,10 +28,18 @@ package ca.gerogiancollege.todolistapp
  *      - Added a new Frame for "Task Completed" Checkbox in the Details Layout
  *      - Re-designed Details layout to accomodate the changes
  *      - Re-configured colouring of CalendarView to make it easier to read in dark mode
+ *
+ * Version 2.0
+ *      - Re-Assigned git repo to "https://github.com/ADera1220/COMP3025---Assignment-4"
+ *      - Added Firebase Implementation
+ *      - Created Realtime Database for ToDo List
+ *      - Changed ToDoTasks Model to include an "id" attribute
+ *
  */
 
 // Data class for ToDoTasks
 data class ToDoTasks(
+    val id: String,
     // The task description
     val taskName: String,
     // The additional notes

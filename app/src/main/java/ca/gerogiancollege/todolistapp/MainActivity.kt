@@ -2,8 +2,8 @@ package ca.gerogiancollege.todolistapp
 
 /**
  * COMP 3025 | Mobile and Pervasive Computing
- * Assignment 3 | ToDo List application
- * November 15, 2023
+ * Assignment 4 | ToDo List application
+ * December 1st, 2023
  * Adam Dera | Student #: 200422676
  *
  * Version 1.0
@@ -28,6 +28,13 @@ package ca.gerogiancollege.todolistapp
  *      - Added a new Frame for "Task Completed" Checkbox in the Details Layout
  *      - Re-designed Details layout to accomodate the changes
  *      - Re-configured colouring of CalendarView to make it easier to read in dark mode
+ *
+ * Version 2.0
+ *      - Re-Assigned git repo to "https://github.com/ADera1220/COMP3025---Assignment-4"
+ *      - Added Firebase Implementation
+ *      - Created Realtime Database for ToDo List
+ *      - Changed ToDoTasks Model to include an "id" attribute
+ *
  */
 
 import androidx.appcompat.app.AppCompatActivity
@@ -43,10 +50,10 @@ class MainActivity : AppCompatActivity() {
 
     // A list of ToDoTasks created for the purpose of DEMO-ing the app
     val currentTasks = mutableListOf<ToDoTasks>(
-        ToDoTasks("Brush teeth", "twice a day", "20/11/2022"),
-        ToDoTasks("Pay Bills", "rent:$750\ncar:$457.67", "02/12/2022"),
-        ToDoTasks("Reformat Laptop", "Create list of programs to reinstall", "30/11/2022"),
-        ToDoTasks("laundry", "twice a day", "20/11/2023")
+        ToDoTasks("Task1X33","Brush teeth", "twice a day", "20/11/2022"),
+        ToDoTasks("Task1X34", "Pay Bills", "rent:$750\ncar:$457.67", "02/12/2022"),
+        ToDoTasks("Task1X35","Reformat Laptop", "Create list of programs to reinstall", "30/11/2022"),
+        ToDoTasks("Task1X36","laundry", "twice a day", "20/11/2023")
     )
 
     // Initialize the Adapter class variable

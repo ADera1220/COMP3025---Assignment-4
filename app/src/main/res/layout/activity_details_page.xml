@@ -8,6 +8,48 @@
     tools:visibility="visible">
 
     <FrameLayout
+        android:id="@+id/Details_Page_Button_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/button_layout_margin_start"
+        android:layout_marginTop="@dimen/button_layout_margin_top"
+        android:layout_marginEnd="@dimen/button_layout_margin_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/Save_Button"
+            android:layout_width="@dimen/details_page_button_width"
+            android:layout_height="@dimen/details_page_button_height"
+            android:layout_gravity="start|center_vertical"
+            android:backgroundTint="@color/regular_button_colour"
+            android:text="@string/save_button_text"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/Cancel_Button"
+            android:layout_width="@dimen/details_page_button_width"
+            android:layout_height="@dimen/details_page_button_height"
+            android:layout_gravity="center|center_vertical"
+            android:backgroundTint="@color/regular_button_colour"
+            android:onClick="addCancelClicked"
+            android:text="@string/cancel_button_text"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/Delete_Button"
+            android:layout_width="@dimen/details_page_button_width"
+            android:layout_height="@dimen/details_page_button_height"
+            android:layout_gravity="center_vertical|end"
+            android:backgroundTint="@color/accent_button_colour"
+            android:text="@string/delete_button_text"
+            tools:ignore="TextContrastCheck" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/Task_Name_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/task_name_framelayout_height"
@@ -90,6 +132,39 @@
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/Task_Complete_FrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/input_fields_layout_margin_start"
+        android:layout_marginTop="590dp"
+        android:layout_marginEnd="@dimen/button_layout_margin_start"
+        android:background="@drawable/layout_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Task_Complete_Label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/details_page_start_margin"
+            android:text="@string/task_complete_label_text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_text_size" />
+
+        <CheckBox
+            android:id="@+id/Details_Page_CheckBox"
+            android:layout_width="@dimen/checkbox_width_height"
+            android:layout_height="@dimen/checkbox_width_height"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginTop="@dimen/checkbox_margin_top"
+            android:layout_marginEnd="@dimen/checkbox_margin_end"
+            android:scaleX="@dimen/checkbox_scale_x_y"
+            android:scaleY="@dimen/checkbox_scale_x_y" />
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/Due_Date_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/date_framelayout_height"
@@ -123,7 +198,8 @@
             android:checked="false"
             android:scaleX="@dimen/checkbox_scale_x_y"
             android:scaleY="@dimen/checkbox_scale_x_y"
-            tools:checked="true" />
+            tools:checked="true"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <CalendarView
             android:id="@+id/Due_Date_CalendarView"
@@ -134,81 +210,6 @@
             android:dateTextAppearance="@style/CalenderViewWeekCustomText"
             android:theme="@style/CalenderViewCustom"
             android:weekDayTextAppearance="@style/CalenderViewDateCustomText" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Task_Complete_FrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginStart="@dimen/input_fields_layout_margin_start"
-        android:layout_marginTop="590dp"
-        android:layout_marginEnd="@dimen/button_layout_margin_start"
-        android:background="@drawable/layout_border"
-        app:layout_constraintBottom_toTopOf="@+id/Details_Page_Button_FrameLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/Task_Complete_Label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/details_page_start_margin"
-            android:text="@string/task_complete_label_text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/label_text_size" />
-
-        <CheckBox
-            android:id="@+id/Details_Page_CheckBox"
-            android:layout_width="@dimen/checkbox_width_height"
-            android:layout_height="@dimen/checkbox_width_height"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginTop="@dimen/checkbox_margin_top"
-            android:layout_marginEnd="@dimen/checkbox_margin_end"
-            android:scaleX="@dimen/checkbox_scale_x_y"
-            android:scaleY="@dimen/checkbox_scale_x_y" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Details_Page_Button_FrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/button_layout_margin_start"
-        android:layout_marginTop="@dimen/button_layout_margin_top"
-        android:layout_marginEnd="@dimen/button_layout_margin_start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/Save_Button"
-            android:layout_width="@dimen/details_page_button_width"
-            android:layout_height="@dimen/details_page_button_height"
-            android:layout_gravity="start|center_vertical"
-            android:backgroundTint="@color/regular_button_colour"
-            android:text="@string/save_button_text"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/Cancel_Button"
-            android:layout_width="@dimen/details_page_button_width"
-            android:layout_height="@dimen/details_page_button_height"
-            android:layout_gravity="center|center_vertical"
-            android:backgroundTint="@color/regular_button_colour"
-            android:onClick="addCancelClicked"
-            android:text="@string/cancel_button_text"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/Delete_Button"
-            android:layout_width="@dimen/details_page_button_width"
-            android:layout_height="@dimen/details_page_button_height"
-            android:layout_gravity="center_vertical|end"
-            android:backgroundTint="@color/accent_button_colour"
-            android:text="@string/delete_button_text" />
 
     </FrameLayout>
 
