@@ -50,6 +50,8 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 // TaskAdapter class for the ToDoTasks
@@ -60,12 +62,12 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
         // We do not need to ass the "notes", "hasDueDate", or "id" here, because they are not shown in the Recycler View
         val name: TextView
         val dueDate: TextView
-        val isCompleted: CheckBox
+        val completed: CheckBox
 
         init {
             name = view.findViewById(R.id.Task_Name_TextView)
             dueDate = view.findViewById(R.id.Due_Date_TextView)
-            isCompleted = view.findViewById(R.id.Task_Completed_CheckBox)
+            completed = view.findViewById(R.id.Task_Completed_CheckBox)
         }
     }
 
@@ -83,7 +85,7 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
          * button is clicked, another adapter, maybe?
          */
         holder.name.text = dataSet[position].name
-        holder.isCompleted.isChecked = dataSet[position].isCompleted
+        holder.completed.isChecked = dataSet[position].completed
         holder.dueDate.text = dataSet[position].dueDate
 
     }

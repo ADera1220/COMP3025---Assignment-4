@@ -11,7 +11,7 @@
         android:id="@+id/Details_Page_Button_FrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/button_layout_margin_start"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="@dimen/button_layout_margin_top"
         android:layout_marginEnd="@dimen/button_layout_margin_start"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,7 @@
 
     <FrameLayout
         android:id="@+id/Task_Name_FrameLayout"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/details_page_width"
         android:layout_height="@dimen/task_name_framelayout_height"
         android:layout_marginStart="@dimen/input_fields_layout_margin_start"
         android:layout_marginTop="@dimen/task_name_margin_top"
@@ -59,7 +59,7 @@
         android:background="@drawable/layout_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -92,7 +92,7 @@
 
     <FrameLayout
         android:id="@+id/Task_Details_FrameLayout"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/details_page_width"
         android:layout_height="@dimen/task_details_frame_height"
         android:layout_marginStart="@dimen/input_fields_layout_margin_start"
         android:layout_marginTop="@dimen/task_details_margin_top"
@@ -100,7 +100,7 @@
         android:background="@drawable/layout_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -133,13 +133,14 @@
 
     <FrameLayout
         android:id="@+id/Task_Complete_FrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_width="@dimen/details_page_width"
+        android:layout_height="@dimen/task_completed_height"
         android:layout_marginStart="@dimen/input_fields_layout_margin_start"
-        android:layout_marginTop="590dp"
+        android:layout_marginTop="588dp"
         android:layout_marginEnd="@dimen/button_layout_margin_start"
         android:background="@drawable/layout_border"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -166,7 +167,7 @@
 
     <FrameLayout
         android:id="@+id/Due_Date_FrameLayout"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/details_page_width"
         android:layout_height="@dimen/date_framelayout_height"
         android:layout_marginStart="@dimen/input_fields_layout_margin_start"
         android:layout_marginTop="@dimen/due_date_margin_top"
@@ -174,7 +175,7 @@
         android:background="@drawable/layout_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">

@@ -41,5 +41,7 @@
     <dimen name="checkbox_margin_end">20dp</dimen>
     <dimen name="input_fields_text_padding">5dp</dimen>
     <dimen name="list_item_width">410dp</dimen>
+    <dimen name="details_page_width">410dp</dimen>
+    <dimen name="task_completed_height">70dp</dimen>
     <item name="checkbox_scale_x_y" type="dimen" format="float">1.5</item>
 </resources>

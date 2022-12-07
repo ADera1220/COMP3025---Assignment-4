@@ -39,34 +39,35 @@ package ca.gerogiancollege.todolistapp
  *      - Restructured the ToDoTask Data Class to reflect required data
  *      - Created Enum Class AlertAction to help identify which CRUD action is being done
  *      - Reconfigured Layouts to use Fragments
+ *
+ * Version 2.2
+ *      - Completed ADD functionality for new tasks
+ *      - Corrected issue with Data Class and RealTime Database causing the completion checkbox to not work
+ *      - Task list is now handled by exclusively Firebase
  */
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import ca.gerogiancollege.todolistapp.ToDoListFragment as ToDoListFragment
 
 class MainActivity : AppCompatActivity() {
 
-    // A list of ToDoTasks created for the purpose of DEMO-ing the app
-    val currentTasks = mutableListOf<ToDoTask>(
-        ToDoTask("Task1X33","Brush teeth", "twice a day", true, "20/11/2022", false),
-        ToDoTask("Task1X34", "Pay Bills", "rent:$750\ncar:$457.67", true,  "02/12/2022", false),
-        ToDoTask("Task1X35","Reformat Laptop", "Create list of programs to reinstall", false, "", true),
-        ToDoTask("Task1X36","laundry", "twice a day", true, "20/11/2023", false)
-    )
-
     // Initialize the Adapter class variable
-    private lateinit var db: DatabaseReference
     private lateinit var ToDoTasks: MutableList<ToDoTask>
+    lateinit var db: DatabaseReference
     lateinit var taskAdapter: TaskAdapter
     lateinit var addTaskButton: Button
+    lateinit var alertAction: AlertAction
+    lateinit var currentTask: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,53 @@ class MainActivity : AppCompatActivity() {
         // Initialize the Adapter, Database Reference, and the MutableList of Tasks
         db = Firebase.database.reference
         ToDoTasks = mutableListOf<ToDoTask>()
-        taskAdapter = TaskAdapter(currentTasks)
+        taskAdapter = TaskAdapter(ToDoTasks)
 
+    }
+
+    fun addTask(toDoTask: ToDoTask) {
+        db.child("ToDoTasks").child(toDoTask.id.toString()).setValue(toDoTask)
+    }
+
+    fun updateTask(toDoTask: ToDoTask?) {
+        db.child("ToDoTasks").child(toDoTask?.id.toString()).setValue(toDoTask)
+    }
+
+    fun deleteTask(toDoTask: ToDoTask?) {
+        db.child("ToDoTasks").child(toDoTask?.id.toString()).removeValue()
+    }
+
+    fun getTaskList(): MutableList<ToDoTask> {
+        return ToDoTasks
+    }
+
+    // This function allows the RecyclerView to be filled with tasks, this may change in the final version
+    fun populateToDoList() {
+        val toDoList: RecyclerView? = findViewById(R.id.Todo_Recycler_View)
+        toDoList?.layoutManager = LinearLayoutManager(this)
+        toDoList?.adapter = taskAdapter
+    }
+
+    fun addTaskEventListener(dbReference: DatabaseReference) {
+        val taskListListener = object: ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                ToDoTasks.clear()
+                val toDoTaskDB = dataSnapshot.child("ToDoTasks").children
+
+                for(toDoTask in toDoTaskDB) {
+                    var newTask = toDoTask.getValue(ToDoTask::class.java)
+
+                    if(newTask != null) {
+                        ToDoTasks.add(newTask)
+                        taskAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.w("tvShowError", "LoadTVShow: Cancelled", databaseError.toException())
+            }
+        }
+        dbReference.addValueEventListener(taskListListener)
     }
 }

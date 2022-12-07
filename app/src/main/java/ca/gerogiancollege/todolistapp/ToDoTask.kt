@@ -39,6 +39,7 @@ package ca.gerogiancollege.todolistapp
  *      - Restructured the ToDoTask Data Class to reflect required data
  *      - Created Enum Class AlertAction to help identify which CRUD action is being done
  *      - Reconfigured Layouts to use Fragments
+ *
  */
 
 import com.google.firebase.database.Exclude
@@ -51,11 +52,11 @@ data class ToDoTask(
     // The additional notes
     val notes: String = "",
     // This Boolean will track whether there will be a due date for this task
-    val hasDueDate: Boolean = false,
+    val hasDueDate: Boolean = true,
     // The due date, currently in String, will be in DATE form in final version
     val dueDate: String = "",
     // this boolean will track the completion of a task constantly, initialized as false, always
-    val isCompleted: Boolean = false
+    val completed: Boolean = false
 ) {
     @Exclude
     fun toMap(): Map<String, Any?> {
@@ -65,7 +66,7 @@ data class ToDoTask(
             "notes" to notes,
             "hasDueDate" to hasDueDate,
             "dueDate" to dueDate,
-            "isCompleted" to isCompleted
+            "completed" to completed
         )
     }
 }

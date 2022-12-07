@@ -67,22 +67,26 @@ class ToDoListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        populateToDoList()
+        (activity as MainActivity).populateToDoList()
+        (activity as MainActivity).addTaskEventListener((activity as MainActivity).db)
 
         var addTaskButton: View? = getView()?.findViewById(R.id.Add_Task_Button)
+        var editTaskButton: View? = getView()?.findViewById(R.id.Edit_Button)
 
         addTaskButton?.setOnClickListener {
+            (activity as MainActivity).alertAction = AlertAction.ADD
             (activity as MainActivity).supportFragmentManager
                 .commit {
                     replace<TaskDetailsFragment>(R.id.Fragment_Container)
                 }
         }
-    }
 
-    // This function allows the RecyclerView to be filled with tasks, this may change in the final version
-    fun populateToDoList() {
-        val toDoList: RecyclerView? = getView()?.findViewById(R.id.Todo_Recycler_View)
-        toDoList?.layoutManager = LinearLayoutManager((activity as MainActivity))
-        toDoList?.adapter = (activity as MainActivity).taskAdapter
+        editTaskButton?.setOnClickListener {
+            (activity as MainActivity).alertAction = AlertAction.UPDATE
+            (activity as MainActivity).supportFragmentManager
+                .commit {
+                    replace<TaskDetailsFragment>(R.id.Fragment_Container)
+                }
+        }
     }
 }
