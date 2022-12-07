@@ -41,41 +41,6 @@ package ca.gerogiancollege.todolistapp
  *      - Reconfigured Layouts to use Fragments
  */
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import ca.gerogiancollege.todolistapp.ToDoListFragment as ToDoListFragment
-
-class MainActivity : AppCompatActivity() {
-
-    // A list of ToDoTasks created for the purpose of DEMO-ing the app
-    val currentTasks = mutableListOf<ToDoTask>(
-        ToDoTask("Task1X33","Brush teeth", "twice a day", true, "20/11/2022", false),
-        ToDoTask("Task1X34", "Pay Bills", "rent:$750\ncar:$457.67", true,  "02/12/2022", false),
-        ToDoTask("Task1X35","Reformat Laptop", "Create list of programs to reinstall", false, "", true),
-        ToDoTask("Task1X36","laundry", "twice a day", true, "20/11/2023", false)
-    )
-
-    // Initialize the Adapter class variable
-    private lateinit var db: DatabaseReference
-    private lateinit var ToDoTasks: MutableList<ToDoTask>
-    lateinit var taskAdapter: TaskAdapter
-    lateinit var addTaskButton: Button
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Initialize the Adapter, Database Reference, and the MutableList of Tasks
-        db = Firebase.database.reference
-        ToDoTasks = mutableListOf<ToDoTask>()
-        taskAdapter = TaskAdapter(currentTasks)
-
-    }
+enum class AlertAction {
+    ADD, UPDATE, DELETE
 }

@@ -40,5 +40,6 @@
     <dimen name="calendar_margin_top">40dp</dimen>
     <dimen name="checkbox_margin_end">20dp</dimen>
     <dimen name="input_fields_text_padding">5dp</dimen>
+    <dimen name="list_item_width">410dp</dimen>
     <item name="checkbox_scale_x_y" type="dimen" format="float">1.5</item>
 </resources>

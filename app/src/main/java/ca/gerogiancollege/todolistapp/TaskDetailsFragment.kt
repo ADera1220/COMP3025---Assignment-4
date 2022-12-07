@@ -41,54 +41,39 @@ package ca.gerogiancollege.todolistapp
  *      - Reconfigured Layouts to use Fragments
  */
 
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.CheckBox
-import android.widget.Switch
-import android.widget.TextView
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.RecyclerView
-import java.util.*
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 
-// TaskAdapter class for the ToDoTasks
-class TaskAdapter(private val dataSet: List<ToDoTask>) :
-    RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskDetailsFragment: Fragment() {
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        // We do not need to ass the "notes", "hasDueDate", or "id" here, because they are not shown in the Recycler View
-        val name: TextView
-        val dueDate: TextView
-        val isCompleted: CheckBox
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        init {
-            name = view.findViewById(R.id.Task_Name_TextView)
-            dueDate = view.findViewById(R.id.Due_Date_TextView)
-            isCompleted = view.findViewById(R.id.Task_Completed_CheckBox)
+        return inflater.inflate(R.layout.todo_list_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var currentTasks = (activity as MainActivity).currentTasks
+
+
+        var FragmentOneToTwoButton: View? = getView()?.findViewById(R.id.Save_Button)
+
+        FragmentOneToTwoButton?.setOnClickListener {
+            (activity as MainActivity).supportFragmentManager
+                .commit {
+                    replace<ToDoListFragment>(R.id.Fragment_Container)
+                }
         }
-    }
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.list_item_layout, viewGroup, false)
-
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        /**
-         * The onBindViewHolder does not bind the "notes" field in the RecyclerView,
-         * I am not currently sure how this will work for the Details page when the "Edit"
-         * button is clicked, another adapter, maybe?
-         */
-        holder.name.text = dataSet[position].name
-        holder.isCompleted.isChecked = dataSet[position].isCompleted
-        holder.dueDate.text = dataSet[position].dueDate
-
-    }
-
-    override fun getItemCount(): Int {
-        return dataSet.size
     }
 }

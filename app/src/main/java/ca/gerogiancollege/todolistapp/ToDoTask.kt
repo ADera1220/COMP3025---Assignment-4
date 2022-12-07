@@ -35,17 +35,37 @@ package ca.gerogiancollege.todolistapp
  *      - Created Realtime Database for ToDo List
  *      - Changed ToDoTasks Model to include an "id" attribute
  *
+ * Version 2.1
+ *      - Restructured the ToDoTask Data Class to reflect required data
+ *      - Created Enum Class AlertAction to help identify which CRUD action is being done
+ *      - Reconfigured Layouts to use Fragments
  */
 
+import com.google.firebase.database.Exclude
+
 // Data class for ToDoTasks
-data class ToDoTasks(
-    val id: String,
+data class ToDoTask(
+    val id: String = "",
     // The task description
-    val taskName: String,
+    val name: String = "",
     // The additional notes
-    val taskDetails: String,
+    val notes: String = "",
+    // This Boolean will track whether there will be a due date for this task
+    val hasDueDate: Boolean = false,
     // The due date, currently in String, will be in DATE form in final version
-    val dueDate: String,
+    val dueDate: String = "",
     // this boolean will track the completion of a task constantly, initialized as false, always
-    val taskComplete: Boolean = false
-)
+    val isCompleted: Boolean = false
+) {
+    @Exclude
+    fun toMap(): Map<String, Any?> {
+        return mapOf(
+            "id" to id,
+            "name" to name,
+            "notes" to notes,
+            "hasDueDate" to hasDueDate,
+            "dueDate" to dueDate,
+            "isCompleted" to isCompleted
+        )
+    }
+}
