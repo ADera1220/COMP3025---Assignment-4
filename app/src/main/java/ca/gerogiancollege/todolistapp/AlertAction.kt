@@ -49,6 +49,13 @@ package ca.gerogiancollege.todolistapp
  *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
  *      - DELETE functionality is added
  *      - an "are you sure" prompt has been added for DELETE requests
+ *
+ * Version 2.4
+ *      - Added dialog for "Cancel" button to ask if unsaved changes should be dropped
+ *      - Removed ability to uncheck boxes from ToDoList
+ *      - Made Checkboxes Theme appropriate
+ *      - Added grey style to list items that are "completed"
+ *      - Increased Task Name text size
  */
 
 enum class AlertAction {

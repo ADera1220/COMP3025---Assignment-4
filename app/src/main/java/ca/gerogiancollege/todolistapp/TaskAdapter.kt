@@ -49,19 +49,20 @@ package ca.gerogiancollege.todolistapp
  *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
  *      - DELETE functionality is added
  *      - an "are you sure" prompt has been added for DELETE requests
+ *
+ * Version 2.4
+ *      - Added dialog for "Cancel" button to ask if unsaved changes should be dropped
+ *      - Removed ability to uncheck boxes from ToDoList
+ *      - Made Checkboxes Theme appropriate
+ *      - Added grey style to list items that are "completed"
+ *      - Increased Task Name text size
  */
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.view.isVisible
-import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import androidx.recyclerview.widget.RecyclerView
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.util.*
 
 // TaskAdapter class for the ToDoTasks
 class TaskAdapter(private val dataSet: List<ToDoTask>) :
@@ -71,12 +72,14 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
 
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        // We do not need to ass the "notes", "hasDueDate", or "id" here, because they are not shown in the Recycler View
+        // We do not need to add the "notes", "hasDueDate", or "id" here, because they are not shown in the Recycler View
+        val frame: FrameLayout
         val name: TextView
         val dueDate: TextView
         val completed: CheckBox
 
         init {
+            frame = view.findViewById(R.id.List_Item_Frame_Layout)
             name = view.findViewById(R.id.Task_Name_TextView)
             dueDate = view.findViewById(R.id.Due_Date_TextView)
             completed = view.findViewById(R.id.Task_Completed_CheckBox)
@@ -99,6 +102,12 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
         holder.completed.isChecked = dataSet[position].completed
         holder.dueDate.text = dataSet[position].dueDate
 
+
+        if(dataSet[position].completed) {
+            holder.frame.setBackgroundResource(R.drawable.layout_border_checked)
+        } else {
+            holder.frame.setBackgroundResource(R.drawable.layout_border_unchecked)
+        }
     }
 
     override fun getItemCount(): Int {

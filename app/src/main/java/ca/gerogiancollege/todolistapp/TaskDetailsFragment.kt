@@ -49,6 +49,13 @@ package ca.gerogiancollege.todolistapp
  *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
  *      - DELETE functionality is added
  *      - an "are you sure" prompt has been added for DELETE requests
+ *
+ * Version 2.4
+ *      - Added dialog for "Cancel" button to ask if unsaved changes should be dropped
+ *      - Removed ability to uncheck boxes from ToDoList
+ *      - Made Checkboxes Theme appropriate
+ *      - Added grey style to list items that are "completed"
+ *      - Increased Task Name text size
  */
 
 import android.content.Context
@@ -125,10 +132,22 @@ class TaskDetailsFragment: Fragment() {
 
         // Cancel event Listener Returns the user to the ToDoList Fragment without performing any other action
         cancelButton?.setOnClickListener {
-            (activity as MainActivity).supportFragmentManager
-                .commit {
-                    replace<ToDoListFragment>(R.id.Fragment_Container)
-                }
+            var builder = AlertDialog.Builder((activity as MainActivity))
+
+            builder.setTitle("Unsaved Changes remain!")
+            builder.setView((activity as MainActivity).layoutInflater.inflate(R.layout.delete_confirm_layout, null))
+            builder.setPositiveButton("Back to List") { dialog, _ ->
+                dialog.dismiss()
+                (activity as MainActivity).supportFragmentManager
+                    .commit {
+                        replace<ToDoListFragment>(R.id.Fragment_Container)
+                    }
+            }
+
+            builder.setNegativeButton("Continue Editing") { dialog, _ ->
+                dialog.dismiss()
+            }
+            builder.create().show()
         }
 
         // Save event listener performs an addTask action with the current data in the input fields, occurs when there is an AlertAction.ADD flag
@@ -195,7 +214,7 @@ class TaskDetailsFragment: Fragment() {
 
         }
 
-
+        (activity as MainActivity).populateToDoList()
     }
 
     // Generates a Random ID that has the time of creation and a random 3 digit Int, to ensure they are unique
