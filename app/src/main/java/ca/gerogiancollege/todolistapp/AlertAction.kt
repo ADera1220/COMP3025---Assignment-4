@@ -3,7 +3,7 @@ package ca.gerogiancollege.todolistapp
 /**
  * COMP 3025 | Mobile and Pervasive Computing
  * Assignment 4 | ToDo List application
- * December 1st, 2023
+ * December 7th, 2022
  * Adam Dera | Student #: 200422676
  *
  * Version 1.0
@@ -39,8 +39,18 @@ package ca.gerogiancollege.todolistapp
  *      - Restructured the ToDoTask Data Class to reflect required data
  *      - Created Enum Class AlertAction to help identify which CRUD action is being done
  *      - Reconfigured Layouts to use Fragments
+ *
+ * Version 2.2
+ *      - Completed ADD functionality for new tasks
+ *      - Corrected issue with Data Class and RealTime Database causing the completion checkbox to not work
+ *      - Task list is now handled by exclusively Firebase
+ *
+ * Version 2.3
+ *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
+ *      - DELETE functionality is added
+ *      - an "are you sure" prompt has been added for DELETE requests
  */
 
 enum class AlertAction {
-    ADD, UPDATE, DELETE
+    ADD, UPDATE
 }

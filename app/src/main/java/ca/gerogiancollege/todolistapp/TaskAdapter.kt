@@ -3,7 +3,7 @@ package ca.gerogiancollege.todolistapp
 /**
  * COMP 3025 | Mobile and Pervasive Computing
  * Assignment 4 | ToDo List application
- * December 1st, 2023
+ * December 7th, 2022
  * Adam Dera | Student #: 200422676
  *
  * Version 1.0
@@ -39,16 +39,25 @@ package ca.gerogiancollege.todolistapp
  *      - Restructured the ToDoTask Data Class to reflect required data
  *      - Created Enum Class AlertAction to help identify which CRUD action is being done
  *      - Reconfigured Layouts to use Fragments
+ *
+ * Version 2.2
+ *      - Completed ADD functionality for new tasks
+ *      - Corrected issue with Data Class and RealTime Database causing the completion checkbox to not work
+ *      - Task list is now handled by exclusively Firebase
+ *
+ * Version 2.3
+ *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
+ *      - DELETE functionality is added
+ *      - an "are you sure" prompt has been added for DELETE requests
  */
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.CheckBox
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -57,6 +66,9 @@ import java.util.*
 // TaskAdapter class for the ToDoTasks
 class TaskAdapter(private val dataSet: List<ToDoTask>) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+
+    var onToDoTaskClick: ((ToDoTask, position: Int) -> Unit)? = null
+
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         // We do not need to ass the "notes", "hasDueDate", or "id" here, because they are not shown in the Recycler View
@@ -68,6 +80,10 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
             name = view.findViewById(R.id.Task_Name_TextView)
             dueDate = view.findViewById(R.id.Due_Date_TextView)
             completed = view.findViewById(R.id.Task_Completed_CheckBox)
+
+            view.setOnClickListener {
+                onToDoTaskClick?.invoke(dataSet[adapterPosition], adapterPosition)
+            }
         }
     }
 
@@ -79,11 +95,6 @@ class TaskAdapter(private val dataSet: List<ToDoTask>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        /**
-         * The onBindViewHolder does not bind the "notes" field in the RecyclerView,
-         * I am not currently sure how this will work for the Details page when the "Edit"
-         * button is clicked, another adapter, maybe?
-         */
         holder.name.text = dataSet[position].name
         holder.completed.isChecked = dataSet[position].completed
         holder.dueDate.text = dataSet[position].dueDate

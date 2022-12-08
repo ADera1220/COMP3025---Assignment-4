@@ -11,4 +11,7 @@
     <string name="cancel_button_text">Cancel</string>
     <string name="delete_button_text">Delete</string>
     <string name="task_complete_label_text">Completed?</string>
+    <string name="delete_task">Delete</string>
+    <string name="delete_dialog_title">Delete this Task?</string>
+    <string name="are_you_sure_text">Are you sure?</string>
 </resources>

@@ -36,14 +36,6 @@
             android:textColor="@color/black"
             android:textSize="@dimen/date_text_size" />
 
-        <Button
-            android:id="@+id/Edit_Button"
-            android:layout_width="@dimen/edit_button_width_height"
-            android:layout_height="@dimen/edit_button_width_height"
-            android:layout_gravity="center|end"
-            android:layout_marginEnd="@dimen/edit_button_margin_end"
-            android:text="@string/edit_button_text" />
-
         <CheckBox
             android:id="@+id/Task_Completed_CheckBox"
             android:layout_width="@dimen/checkbox_width_height"

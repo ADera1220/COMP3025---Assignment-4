@@ -22,7 +22,7 @@
     <dimen name="task_details_edittext_margin_top">40dp</dimen>
     <dimen name="task_details_frame_height">130dp</dimen>
     <dimen name="task_name_margin_start">5dp</dimen>
-    <dimen name="task_name_text_size">16sp</dimen>
+    <dimen name="task_name_text_size">18sp</dimen>
     <dimen name="task_name_margin_top">10dp</dimen>
     <dimen name="task_name_edittext_margin_top">30dp</dimen>
     <dimen name="task_name_framelayout_height">80dp</dimen>

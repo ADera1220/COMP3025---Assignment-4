@@ -3,7 +3,7 @@ package ca.gerogiancollege.todolistapp
 /**
  * COMP 3025 | Mobile and Pervasive Computing
  * Assignment 4 | ToDo List application
- * December 1st, 2023
+ * December 7th, 2022
  * Adam Dera | Student #: 200422676
  *
  * Version 1.0
@@ -44,6 +44,11 @@ package ca.gerogiancollege.todolistapp
  *      - Completed ADD functionality for new tasks
  *      - Corrected issue with Data Class and RealTime Database causing the completion checkbox to not work
  *      - Task list is now handled by exclusively Firebase
+ *
+ * Version 2.3
+ *      - UPDATE functionality is added, CalendarView does not currently behave appropriately
+ *      - DELETE functionality is added
+ *      - an "are you sure" prompt has been added for DELETE requests
  */
 
 import androidx.appcompat.app.AppCompatActivity
@@ -62,12 +67,14 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : AppCompatActivity() {
 
     // Initialize the Adapter class variable
+    private lateinit var toDoList: RecyclerView
     private lateinit var ToDoTasks: MutableList<ToDoTask>
     lateinit var db: DatabaseReference
     lateinit var taskAdapter: TaskAdapter
     lateinit var addTaskButton: Button
     lateinit var alertAction: AlertAction
-    lateinit var currentTask: String
+    lateinit var currentTask: ToDoTask
+    var curentTaskPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,7 +105,7 @@ class MainActivity : AppCompatActivity() {
 
     // This function allows the RecyclerView to be filled with tasks, this may change in the final version
     fun populateToDoList() {
-        val toDoList: RecyclerView? = findViewById(R.id.Todo_Recycler_View)
+        toDoList = findViewById(R.id.Todo_Recycler_View)
         toDoList?.layoutManager = LinearLayoutManager(this)
         toDoList?.adapter = taskAdapter
     }
